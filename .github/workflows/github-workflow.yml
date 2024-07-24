@@ -16,15 +16,15 @@ jobs:
         node-version: '16'
 
     - name: Install dependencies
-      working-directory: my_site
+      working-directory: my-website
       run: npm install
 
     - name: Build Docusaurus site
-      working-directory: my_site
+      working-directory: my-website
       run: npm run build
 
     - name: Run build tests
-      working-directory: my_site
+      working-directory: my-website
       run: |
         if [ ! -d "./build" ]; then
           echo "Build directory not found!"
