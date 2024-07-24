@@ -38,7 +38,7 @@ jobs:
         - name: Deploy to GitHub Pages
           uses: actions/deploy-pages@v4
           with:
-            publish_dir: ./build
+            publish_dir: my-website/build
 
         permissions:
           pages: write
