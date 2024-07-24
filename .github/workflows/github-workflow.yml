@@ -22,18 +22,21 @@ jobs:
     - name: Build Docusaurus site
       working-directory: my-website
       run: npm run build
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
 
-    # - name: Run build tests
-    #   working-directory: my-website
-    #   run: |
-    #     if [ ! -d "./build" ]; then
-    #       echo "Build directory not found!"
-    #       exit 1
-    #     fi
-    #     echo "Build directory found."
+    
+    permissions:
+      pages: write
+      id-token: write 
 
-    #   - name: Deploy to GitHub Pages
-    #       uses: peaceiris/actions-gh-pages@v3
-    #       with:
-    #         deploy_key: ${{ secrets.DEPLOY_KEY }}
-    #         publish_dir: ./build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
