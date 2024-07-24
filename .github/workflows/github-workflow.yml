@@ -19,21 +19,21 @@ jobs:
       working-directory: my-website
       run: npm install
 
-    - name: Build Docusaurus site
-      working-directory: my-website
-      run: npm run build
+    # - name: Build Docusaurus site
+    #   working-directory: my-website
+    #   run: npm run build
 
-    - name: Run build tests
-      working-directory: my-website
-      run: |
-        if [ ! -d "./build" ]; then
-          echo "Build directory not found!"
-          exit 1
-        fi
-        echo "Build directory found."
+    # - name: Run build tests
+    #   working-directory: my-website
+    #   run: |
+    #     if [ ! -d "./build" ]; then
+    #       echo "Build directory not found!"
+    #       exit 1
+    #     fi
+    #     echo "Build directory found."
 
-      - name: Deploy to GitHub Pages
-          uses: peaceiris/actions-gh-pages@v3
-          with:
-            deploy_key: ${{ secrets.DEPLOY_KEY }}
-            publish_dir: ./build
+    #   - name: Deploy to GitHub Pages
+    #       uses: peaceiris/actions-gh-pages@v3
+    #       with:
+    #         deploy_key: ${{ secrets.DEPLOY_KEY }}
+    #         publish_dir: ./build
